@@ -1,12 +1,10 @@
-#include "model/exact_dna_search.h"
+#include "controller/facade.h"
 #include <iostream>
 
 int main() {
-    std::string text = "Hello my name Vlad! I am junior backend developer Vlad";
-    std::string pattern = "Vlad";
-    RabinKarp r(text, pattern);
-    auto pos = r.GetResult();
-    for (auto &i : pos) {
+    Facade f;
+    auto result = f.GetExactDNASearch("data/text.txt", "data/pattern.txt");
+    for (auto &i : result) {
         std::cout << i << "\n";
     }
 }

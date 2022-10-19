@@ -2,11 +2,9 @@
 #include <cmath>
 #include <iostream>
 
-RabinKarp::RabinKarp(std::string text, std::string pattern) : text_(text), pattern_(pattern){
+const std::vector<int>& RabinKarp::GetResult(const std::string& text, const std::string& pattern) {
+    SetText(text, pattern);
     InitializingArguments();
-}
-
-const std::vector<int>& RabinKarp::GetResult() {
     int patternHash = GetHash(pattern_);
     int textHash = GetHash(text_.substr(0, patternLength_));
     for (int i = 0; i < (textLength_ - patternLength_ + 1); i++) {
@@ -18,6 +16,11 @@ const std::vector<int>& RabinKarp::GetResult() {
         }
     }
     return position_;
+}
+
+void RabinKarp::SetText(const std::string& text, const std::string& pattern) {
+    text_ = text;
+    pattern_ = pattern;
 }
 
 int RabinKarp::GetHash(const std::string& str) {

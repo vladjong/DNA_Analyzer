@@ -6,16 +6,11 @@
 constexpr int p = 10; 
 constexpr int q = 256; 
 
-class Hash {
-public:
-    Hash();
-};
-
 class RabinKarp {
 public:
-    RabinKarp(std::string text, std::string pattern);
+    RabinKarp() = default;
     ~RabinKarp() = default;
-    const std::vector<int>& GetResult();
+    const std::vector<int>& GetResult(const std::string& text, const std::string& pattern);
 private:
     std::vector<int> position_;
     std::string text_;
@@ -27,4 +22,5 @@ private:
     int GetHash(const std::string& str);
     int GetSlidingHash(const std::string& str, int preHash, int index);
     void InitializingArguments();
+    void SetText(const std::string& text, const std::string& pattern);
 };
